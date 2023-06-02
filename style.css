@@ -1,0 +1,96 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.container {
+    width: 280px;
+}
+
+body {
+    font-family: 'Poppins', sans-serif;
+    font-size: 16px;
+}
+
+.navbar {
+    height: 65px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #fefdfc;
+    padding: 10px;
+    border-bottom: 1px solid rgb(233, 230, 230);
+}
+
+.nav-heading {
+    font-size: 0.8rem;
+    color: #DE483A;
+}
+
+.nav-links ul li {
+    display: inline-block;
+    margin-right: 2px;
+}
+
+.nav-links ul li a {
+    font-size: 0.8rem;
+    text-decoration: none;
+    color: #DE483A;
+}
+
+.nav-links ul li a:hover {
+    opacity: 0.7;
+}
+
+.signup-btn {
+    font-family: inherit;
+    border: none;
+    font-size: 0.8rem;
+    background-color: #DE483A;
+    color: white;
+    padding: 10px;
+    border-radius: 20px;
+}
+
+.signup-btn:hover {
+    cursor: pointer;
+}
+
+.header {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.header h3 {
+    color: #DE483A;
+    letter-spacing: 2px;
+    text-align: center;
+    font-size: 1.4rem;
+    margin-top: 25%;
+}
+
+.header p {
+    text-align: center;
+    color: #302020;
+    font-size: 1.1rem;
+    letter-spacing: 2px;
+    margin: 20px 15px;
+}
+
+.get-started {
+    font-family: inherit;
+    border: none;
+    border-radius: 25px;
+    padding: 15px;
+    margin-top: 10px;
+    background-color: #DE483A;
+    color: white;
+}
+
+.get-started:hover {
+    cursor: pointer;
+    opacity: 0.7;
+}
