@@ -117,3 +117,59 @@ body {
         font-size: 1.2rem;
     }
 }
+
+@media (min-width:768px) {
+    .container {
+        width: 100%;
+    }
+
+    .nav-heading {
+        font-size: 2rem;
+        margin-left: 10px;
+    }
+
+    .nav-links ul li a,
+    .signup-btn {
+        font-size: 1.1rem;
+        margin-right: 10px;
+    }
+
+    .header h3 {
+        font-size: 4rem;
+    }
+
+    .header p {
+        font-size: 2rem;
+    }
+
+    .get-started {
+        padding: 25px;
+        font-size: 1.5rem;
+    }
+}
+
+@media (min-width: 992px) {
+    .container {
+        width: 100%;
+    }
+
+    .navbar {
+        height: 80px;
+    }
+
+    .nav-heading {
+        font-size: 1.5rem;
+        margin-left: 30px;
+    }
+
+    .nav-links ul li a,
+    .signup-btn {
+        font-size: 1.1rem;
+        margin-right: 30px;
+    }
+
+    .header h3 {
+        font-size: 4rem;
+        margin-top: 10%;
+    }
+}
