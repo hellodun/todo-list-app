@@ -97,7 +97,7 @@ body {
 }
 
 form {
-    width: 800px;
+    width: 250px;
     height: 500px;
     margin: 5% auto;
     padding: 15px;
@@ -105,12 +105,13 @@ form {
 
 form h2 {
     color: #DE483A;
-    font-size: 2rem;
+    font-size: 1.8rem;
+    margin-bottom: 20px;
     text-align: center;
 }
 
 label {
-    font-size: 1.2rem;
+    font-size: 1rem;
 }
 
 input[type="text"],
@@ -124,10 +125,10 @@ input[type="password"] {
 
 input[type="submit"] {
     width: 50%;
-    margin: 20px 25%;
+    margin: 30px 25%;
     padding: 10px;
     font-family: inherit;
-    font-size: 1.2rem;
+    font-size: 1rem;
     background-color: #DE483A;
     color: white;
     border: none;
@@ -140,7 +141,7 @@ input[type="submit"]:hover {
 }
 
 .login-form p {
-    font-size: 1.1rem;
+    font-size: 1rem;
 }
 
 .login-form p a {
@@ -165,6 +166,22 @@ input[type="submit"]:hover {
     }
 
     .header p {
+        font-size: 1.2rem;
+    }
+
+    form {
+        width: 340px;
+    }
+
+    form h2 {
+        font-size: 2rem;
+    }
+
+    label {
+        font-size: 1.2rem;
+    }
+
+    input[type="submit"] {
         font-size: 1.2rem;
     }
 }
@@ -197,6 +214,22 @@ input[type="submit"]:hover {
         padding: 25px;
         font-size: 1.5rem;
     }
+
+    form {
+        width: 740px;
+    }
+
+    form h2 {
+        font-size: 3rem;
+    }
+
+    label {
+        font-size: 1.8rem;
+    }
+
+    input[type="submit"] {
+        font-size: 1.8rem;
+    }
 }
 
 @media (min-width: 992px) {
@@ -222,5 +255,21 @@ input[type="submit"]:hover {
     .header h3 {
         font-size: 4rem;
         margin-top: 10%;
+    }
+
+    form {
+        width: 800px;
+    }
+
+    form h2 {
+        font-size: 2rem;
+    }
+
+    label {
+        font-size: 1.2rem;
+    }
+
+    input[type="submit"] {
+        font-size: 1.2rem;
     }
 }
