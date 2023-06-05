@@ -96,6 +96,56 @@ body {
     opacity: 0.7;
 }
 
+.login-form {
+    width: 800px;
+    height: 500px;
+    margin: 5% auto;
+    padding: 15px;
+}
+
+.login {
+    color: #DE483A;
+    font-size: 2rem;
+    text-align: center;
+}
+
+label {
+    font-size: 1.2rem;
+}
+
+input[type="email"],
+input[type="password"] {
+    width: 100%;
+    margin-top: 5px;
+    margin-bottom: 15px;
+    padding: 10px;
+}
+
+input[type="submit"] {
+    width: 50%;
+    margin: 20px 25%;
+    padding: 10px;
+    font-family: inherit;
+    font-size: 1.2rem;
+    background-color: #DE483A;
+    color: white;
+    border: none;
+    border-radius: 20px;
+}
+
+input[type="submit"]:hover {
+    cursor: pointer;
+    opacity: 0.7;
+}
+
+.login-form p {
+    font-size: 1.1rem;
+}
+
+.login-form p a {
+    color: #DE483A;
+}
+
 @media (min-width:360px) {
     .container {
         width: 100%;
