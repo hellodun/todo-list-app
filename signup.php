@@ -18,7 +18,54 @@
             <h1>DoToday</h1>
         </div>
     </nav>
-    <form action="" class="signup-form">
+    <?php
+    $showAlert = false;
+    $showError = false;
+    $exists = false;
+    if ($_SERVER["REQUEST_METHOD"] == "POST") {
+        include "db_conn.php";
+        $name = $_POST["name"];
+        $email = $_POST["setemail"];
+        $password = $_POST["setpassword"];
+        $confirmPassword = $_POST["retypepassword"];
+
+        $sql = "SELECT * FROM users WHERE email = '$email'";
+        $result = mysqli_query($conn, $sql);
+        $num = mysqli_num_rows($result);
+
+        if ($num == 0) {
+            if (($password == $confirmPassword) && $exists == false) {
+                $hash = password_hash($password, PASSWORD_DEFAULT);
+                $sql = "INSERT INTO `users` (`name`, `email`, `password`) VALUES ('$name', '$email', '$hash')";
+                $result = mysqli_query($conn, $sql);
+                if ($result) {
+                    $showAlert = true;
+                }
+            } else {
+                $showError = true;
+            }
+        }
+        if ($num > 0) {
+            $exists = true;
+        }
+    }
+
+    if ($showAlert) {
+        echo "<script> alert('Your account is successfully created');
+        window.location.assign('login.php');
+        </script>";
+    }
+
+    if ($exists) {
+        echo "<script> alert('Email is already taken');</script>";
+    }
+
+    if ($showError) {
+        echo "<script> alert('Passwords do not match');</script>";
+    }
+
+    ?>
+    <form action="signup.php" method="post" class="signup-form">
         <h2>Sign Up</h2>
         <label for="name">Name</label>
         <input type="text" name="name" id="name" required>
