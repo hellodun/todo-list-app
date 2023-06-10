@@ -12,20 +12,49 @@
     <title>Login</title>
 </head>
 
+<?php
+$invalid_login = false;
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
+    if (isset($_POST["signin"])) {
+        include "db_conn.php";
+        $email = $_POST["email"];
+        $password = $_POST["password"];
+        $sql = "SELECT * FROM `users` WHERE `email` = '$email'";
+        $result = mysqli_query($conn, $sql);
+        if ($result && mysqli_num_rows($result) > 0) {
+            $row = mysqli_fetch_assoc($result);
+            $stored_password = $row['password'];
+            if (password_verify($password, $stored_password)) {
+                session_start();
+                $_SESSION['loggedin'] = true;
+                $_SESSION['email'] = $row['email'];
+                header("Location: todolist.php");
+                exit();
+            }
+        }
+        $invalid_login = true;
+        if ($invalid_login) {
+            echo "<script>alert('Invalid Credentials');</script>";
+        }
+    }
+}
+
+?>
+
 <body>
     <nav class="navbar">
         <div class="nav-heading">
             <h1>DoToday</h1>
         </div>
     </nav>
-    <form action="" class="login-form">
+    <form action="" method="post" class="login-form">
         <h2 class="login">Login</h2>
         <label for="email">Email</label>
         <input type="email" name="email" id="email" required>
         <label for="password">Password</label>
         <input type="password" name="password" id="password" required>
         <p>Not signed-up? <a href="signup.php">Register Now!</a></p>
-        <input type="submit" value="Sign In">
+        <input type="submit" name="signin" value="Sign In">
     </form>
 
 </body>
