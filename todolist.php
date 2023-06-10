@@ -6,6 +6,21 @@ if (!isset($_SESSION['email'])) {
 }
 ?>
 
+<?php
+$error = false;
+include "db_conn.php";
+if (isset($_POST["add-task"])) {
+    if (empty($_POST['input-task'])) {
+        $error = true;
+    } else {
+        $task = $_POST['input-task'];
+        $sql = "INSERT INTO `tasks` (`task`) VALUES ('$task')";
+        mysqli_query($conn, $sql);
+        header("Location: todolist.php");
+    }
+}
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -28,7 +43,12 @@ if (!isset($_SESSION['email'])) {
     </nav>
     <div class="list-container">
         <div class="input-box">
-            <form action="" class="input-task">
+            <form action="todolist.php" method="post" class="input-task">
+                <?php
+                if ($error) {
+                    echo "<script>alert('Please enter a task');</script>";
+                }
+                ?>
                 <input type="text" name="input-task" id="inp-tsk" placeholder="Add Task">
                 <input type="submit" name="add-task" id="add-task" value="+">
             </form>
@@ -36,46 +56,17 @@ if (!isset($_SESSION['email'])) {
         <div class="todo-items">
             <form action="" class="items-form">
                 <h3>Tasks:</h3>
-                <input type="checkbox" class="finish-task">
-                <label>Complete UI</label><br>
-                <input type="checkbox" class="finish-task">
-                <label>Complete UI</label><br>
-                <input type="checkbox" class="finish-task">
-                <label>Complete UI</label><br>
-                <input type="checkbox" class="finish-task">
-                <label>Complete UI</label><br>
-                <input type="checkbox" class="finish-task">
-                <label>Complete UI</label><br>
-                <input type="checkbox" class="finish-task">
-                <label>Complete UI</label><br>
-                <input type="checkbox" class="finish-task">
-                <label>Complete UI</label><br>
-                <input type="checkbox" class="finish-task">
-                <label>Complete UI</label><br>
-                <input type="checkbox" class="finish-task">
-                <label>Complete UI</label><br>
-                <input type="checkbox" class="finish-task">
-                <label>Complete UI</label><br>
-                <input type="checkbox" class="finish-task">
-                <label>Complete UI</label><br>
-                <input type="checkbox" class="finish-task">
-                <label>Complete UI</label><br>
-                <input type="checkbox" class="finish-task">
-                <label>Complete UI</label><br>
-                <input type="checkbox" class="finish-task">
-                <label>Complete UI</label><br>
-                <input type="checkbox" class="finish-task">
-                <label>Complete UI</label><br>
-                <input type="checkbox" class="finish-task">
-                <label>Complete UI</label><br>
-                <input type="checkbox" class="finish-task">
-                <label>Complete UI</label><br>
-                <input type="checkbox" class="finish-task">
-                <label>Complete UI</label><br>
-                <input type="checkbox" class="finish-task">
-                <label>Complete UI</label><br>
-                <input type="checkbox" class="finish-task">
-                <label>Complete UI</label><br>
+                <?php
+                $task_label = mysqli_query($conn, "SELECT * FROM tasks");
+                $row = mysqli_fetch_array($task_label);
+                $i = 1;
+                while ($row = mysqli_fetch_array($task_label)) { ?>
+                    <input type="checkbox" id="finish-task">
+                    <label for="finish-task"> <?php echo $row['task']; ?></label> <br>
+
+                <?php $i++;
+                } ?>
+
             </form>
         </div>
     </div>
