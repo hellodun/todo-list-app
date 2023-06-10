@@ -61,8 +61,8 @@ if (isset($_POST["add-task"])) {
                 $row = mysqli_fetch_array($task_label);
                 $i = 1;
                 while ($row = mysqli_fetch_array($task_label)) { ?>
-                    <input type="checkbox" id="finish-task">
-                    <label for="finish-task"> <?php echo $row['task']; ?></label> <br>
+                    <input type="checkbox" class="checkbox">
+                    <label class="label"> <?php echo $row['task']; ?></label> <br>
 
                 <?php $i++;
                 } ?>
@@ -70,6 +70,7 @@ if (isset($_POST["add-task"])) {
             </form>
         </div>
     </div>
+    <script src="script.js"></script>
 </body>
 
 </html>
