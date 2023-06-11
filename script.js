@@ -12,3 +12,14 @@ function applyStrikethrough() {
     });
 }
 applyStrikethrough();
+
+const getUser = document.querySelector('.hello-user');
+const logoutDiv = document.querySelector('.logout');
+getUser.addEventListener("click", function () {
+    if (logoutDiv.style.display == 'none') {
+        logoutDiv.style.display = "block";
+    }
+    else {
+        logoutDiv.style.display = 'none';
+    }
+});
