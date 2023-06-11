@@ -9,12 +9,16 @@ if (!isset($_SESSION['email'])) {
 <?php
 $error = false;
 include "db_conn.php";
+$getUserId = "SELECT id FROM users WHERE email= '" . $_SESSION['email'] . "'";
+$result = mysqli_query($conn, $getUserId);
+$row = mysqli_fetch_array($result);
+$id = $row['id'];
 if (isset($_POST["add-task"])) {
     if (empty($_POST['input-task'])) {
         $error = true;
     } else {
         $task = $_POST['input-task'];
-        $sql = "INSERT INTO `tasks` (`task`) VALUES ('$task')";
+        $sql = "INSERT INTO `tasks` (`user_id`, `task`) VALUES ('$id', '$task')";
         mysqli_query($conn, $sql);
         header("Location: todolist.php");
     }
@@ -57,10 +61,10 @@ if (isset($_POST["add-task"])) {
             <form action="" class="items-form">
                 <h3>Tasks:</h3>
                 <?php
-                $task_label = mysqli_query($conn, "SELECT * FROM tasks");
-                $row = mysqli_fetch_array($task_label);
-                $i = 1;
-                while ($row = mysqli_fetch_array($task_label)) { ?>
+                $task_label = mysqli_query($conn, "SELECT * FROM tasks WHERE user_id = '$id'");
+                $row = mysqli_num_rows($task_label);
+                $i = 0;
+                while ($row = mysqli_fetch_assoc($task_label)) { ?>
                     <input type="checkbox" class="checkbox">
                     <label class="label"> <?php echo $row['task']; ?></label> <br>
 
