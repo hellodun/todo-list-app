@@ -44,6 +44,18 @@ if (isset($_POST["add-task"])) {
         <div class="nav-heading">
             <h1>DoToday</h1>
         </div>
+        <div class="greetUser">
+            <?php
+            $getUserName = "SELECT `name` FROM users WHERE email= '" . $_SESSION['email'] . "'";
+            $res = mysqli_query($conn, $getUserName);
+            $getName = mysqli_fetch_array($res);
+            $name = $getName['name'];
+            echo '<h4 class="hello-user">Hello! ' . $name . '</h4>';
+            ?>
+            <div class="logout">
+                <a href="logout.php">Log Out</a>
+            </div>
+        </div>
     </nav>
     <div class="list-container">
         <div class="input-box">
