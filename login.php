@@ -50,9 +50,15 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     <form action="" method="post" class="login-form">
         <h2 class="login">Login</h2>
         <label for="email">Email</label>
-        <input type="email" name="email" id="email" required>
+        <input type="email" name="email" id="email" value="<?php
+                                                            if ($invalid_login) {
+                                                                echo htmlspecialchars($email);
+                                                            } ?>" required>
         <label for="password">Password</label>
-        <input type="password" name="password" id="password" required>
+        <input type="password" name="password" id="password" value="<?php
+                                                                    if ($invalid_login) {
+                                                                        echo htmlspecialchars($password);
+                                                                    } ?>" required>
         <p>Not signed-up? <a href="signup.php">Register Now!</a></p>
         <input type="submit" name="signin" value="Sign In">
     </form>
