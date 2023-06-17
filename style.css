@@ -187,6 +187,7 @@ input[type="submit"]:hover {
 .items-form {
     height: 200px;
     overflow: scroll;
+    margin-bottom: 0;
 }
 
 .items-form h3 {
@@ -200,6 +201,18 @@ input[type="submit"]:hover {
 
 .items-form label {
     font-size: 0.9rem;
+}
+
+#delete-task {
+    width: 50%;
+    margin: 10px 25%;
+    padding: 10px;
+    font-family: inherit;
+    font-size: 0.7rem;
+    background-color: #DE483A;
+    color: white;
+    border: none;
+    border-radius: 20px;
 }
 
 @media (min-width:360px) {
@@ -250,6 +263,12 @@ input[type="submit"]:hover {
 
     .items-form label {
         font-size: 1rem;
+    }
+
+    #delete-task {
+        width: 50%;
+        margin: 10px 25%;
+        font-size: 0.9rem;
     }
 }
 
@@ -380,5 +399,11 @@ input[type="submit"]:hover {
 
     .items-form label {
         font-size: 1.2rem;
+    }
+
+    #delete-task {
+        width: 30%;
+        margin: 10px 35%;
+        font-size: 1rem;
     }
 }
