@@ -6,6 +6,7 @@ if (!isset($_SESSION['email'])) {
 }
 
 $error = false;
+$delError = false;
 include "db_conn.php";
 $getUserId = "SELECT id FROM users WHERE email= '" . $_SESSION['email'] . "'";
 $result = mysqli_query($conn, $getUserId);
@@ -21,6 +22,20 @@ if (isset($_POST["add-task"])) {
         header("Location: todolist.php");
     }
 }
+
+
+if (isset($_POST['delete-task']) && !empty($_POST['check'])) {
+    if (!$delError) {
+        $checkbox = $_POST['check'];
+        for ($i = 0; $i < count($checkbox); $i++) {
+            $del_id = $checkbox[$i];
+            mysqli_query($conn, "DELETE FROM `tasks` WHERE id= '$del_id'");
+        }
+    }
+}
+
+$result = mysqli_query($conn, "SELECT * FROM tasks WHERE user_id = '$id'");
+
 ?>
 
 <!DOCTYPE html>
@@ -68,20 +83,21 @@ if (isset($_POST["add-task"])) {
             </form>
         </div>
         <div class="todo-items">
-            <form action="" class="items-form">
+            <form action="" method="post" class="items-form">
                 <h3>Tasks:</h3>
                 <?php
                 $task_label = mysqli_query($conn, "SELECT * FROM tasks WHERE user_id = '$id'");
                 $row = mysqli_num_rows($task_label);
                 $i = 0;
                 while ($row = mysqli_fetch_assoc($task_label)) { ?>
-                    <input type="checkbox" class="checkbox">
-                    <label class="label"> <?php echo $row['task']; ?></label> <br>
+                    <input type="checkbox" class="checkbox" name="check[]" value="<?php echo $row['id']; ?>">
+                    <label class=" label"> <?php echo $row['task']; ?></label> <br>
 
                 <?php $i++;
                 } ?>
-
+                <input type="submit" name="delete-task" id="delete-task" value="Delete Selected">
             </form>
+
         </div>
     </div>
     <script src="script.js"></script>
