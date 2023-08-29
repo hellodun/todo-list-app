@@ -1,6 +1,9 @@
 # todo-list-app
+
+Code credits to original [repo](https://github.com/zainahmed1713/todo-list-app.git).
+
 A Full-Stack Todo List WebApp that I am currently building as a Final Project for my Web Systems &amp; Technologies Lab.
-To use this Web App, First create a database connectivity file. You can name it as ```db_connect.php```
+To use this Web App, First create a database connectivity file. You can name it as ```db_conn.php```
 Now, in this file, Write the following code:
 ```
 <?php
