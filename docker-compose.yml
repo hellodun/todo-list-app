@@ -1,7 +1,10 @@
 version: '3'
 services:
   www:
-    image: php:apache
+    container_name: app
+    build: .
+    depends_on:
+      - db
     volumes:
       - "./:/var/www/html"
     ports:
@@ -9,6 +12,7 @@ services:
       - 443:443
     restart: always
   db:
+    container_name: db
     image: mysql:latest
     environment:
       - MYSQL_DATABASE=todoapp
@@ -18,6 +22,7 @@ services:
     volumes:
       - "./db:/docker-entrypoint-initdb.d"
   phpmyadmin:
+    container_name: phpmyadmin
     image: phpmyadmin/phpmyadmin
     ports:
       - 8001:80
