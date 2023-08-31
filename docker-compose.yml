@@ -7,3 +7,21 @@ services:
     ports:
       - 80:80
       - 443:443
+    command: "docker-php-ext-install mysqli && docker-php-ext-enable mysqli"
+    restart: always
+  db:
+    image: mysql:latest
+    environment:
+      - MYSQL_DATABASE=todoapp
+      - MYSQL_USER=admin
+      - MYSQL_PASSWORD=admin@123
+      - MYSQL_ALLOW_EMPTY_PASSWORD=1
+    volumes:
+      - "./db:/docker-entrypoint-initdb.d"
+  phpmyadmin:
+    image: phpmyadmin/phpmyadmin
+    ports:
+      - 8001:80
+    environment:
+      - PMA_HOST=db
+      - PWA_PORT=3306
